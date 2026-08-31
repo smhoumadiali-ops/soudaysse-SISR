@@ -1,0 +1,437 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Soudaysse M'HOUMADI ALI - Portfolio BTS SIO SISR</title>
+    <style>
+        :root {
+            --primary: #0056b3;
+            --primary-light: #e6f0fa;
+            --secondary: #002d62;
+            --bg-light: #f8f9fa;
+            --white: #ffffff;
+            --text-dark: #212529;
+            --text-muted: #6c757d;
+            --accent: #00d2ff;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            background-color: var(--white);
+            color: var(--text-dark);
+            line-height: 1.6;
+        }
+
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background-color: rgba(255, 255, 255, 0.95);
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 5%;
+            z-index: 1000;
+        }
+
+        nav .logo {
+            font-weight: 700;
+            color: var(--primary);
+            font-size: 1.3rem;
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+
+        nav a {
+            text-decoration: none;
+            color: var(--text-dark);
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+
+        nav a:hover {
+            color: var(--primary);
+        }
+
+        .hero {
+            background: linear-gradient(135deg, var(--secondary) 0%, var(--primary) 100%);
+            color: var(--white);
+            padding: 8rem 5% 5rem 5%;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero h1 {
+            font-size: 3rem;
+            margin-bottom: 0.5rem;
+            letter-spacing: -1px;
+        }
+
+        .hero p {
+            font-size: 1.3rem;
+            opacity: 0.9;
+            margin-bottom: 2rem;
+        }
+
+        .hero-badges {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+
+        .hero-badges span {
+            background: rgba(255, 255, 255, 0.15);
+            padding: 0.4rem 1rem;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            backdrop-filter: blur(5px);
+            border: 1px solid rgba(255,255,255,0.2);
+        }
+
+        .section {
+            padding: 5rem 10%;
+        }
+
+        .section:nth-child(even) {
+            background-color: var(--bg-light);
+        }
+
+        h2.section-title {
+            font-size: 2rem;
+            color: var(--secondary);
+            margin-bottom: 3rem;
+            position: relative;
+            padding-bottom: 0.5rem;
+        }
+
+        h2.section-title::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 50px;
+            height: 4px;
+            background-color: var(--primary);
+            border-radius: 2px;
+        }
+
+        .grid-2 {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2.5rem;
+        }
+
+        .grid-3 {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+        }
+
+        .card {
+            background-color: var(--white);
+            padding: 2rem;
+            border-radius: 12px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.03);
+            border: 1px solid rgba(0,0,0,0.05);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(0,86,179,0.08);
+        }
+
+        .card h3 {
+            color: var(--primary);
+            margin-bottom: 1rem;
+            font-size: 1.3rem;
+        }
+
+        .profile-list {
+            list-style: none;
+        }
+
+        .profile-list li {
+            margin-bottom: 0.8rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .skill-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .skill-group h4 {
+            color: var(--secondary);
+            margin-bottom: 0.5rem;
+            font-size: 1rem;
+        }
+
+        .tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+        }
+
+        .tag {
+            background-color: var(--primary-light);
+            color: var(--primary);
+            padding: 0.3rem 0.8rem;
+            border-radius: 6px;
+            font-size: 0.85rem;
+            font-weight: 600;
+        }
+
+        .timeline {
+            position: relative;
+            border-left: 3px solid var(--primary-light);
+            padding-left: 1.5rem;
+            margin-left: 0.5rem;
+        }
+
+        .timeline-item {
+            position: relative;
+            margin-bottom: 2.5rem;
+        }
+
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: calc(-1.5rem - 7px);
+            top: 4px;
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background-color: var(--primary);
+            border: 3px solid var(--white);
+        }
+
+        .timeline-date {
+            font-size: 0.85rem;
+            color: var(--primary);
+            font-weight: 700;
+            text-transform: uppercase;
+            margin-bottom: 0.3rem;
+        }
+
+        .timeline-company {
+            font-weight: 600;
+            color: var(--text-dark);
+        }
+
+        .code-block {
+            background-color: #212529;
+            color: #f8f9fa;
+            padding: 1rem;
+            border-radius: 6px;
+            font-family: monospace;
+            font-size: 0.8rem;
+            overflow-x: auto;
+            margin-top: 1rem;
+            white-space: pre;
+        }
+
+        footer {
+            background-color: var(--secondary);
+            color: var(--white);
+            text-align: center;
+            padding: 2.5rem;
+            font-size: 0.9rem;
+        }
+
+        footer p { opacity: 0.7; }
+
+        a { color: var(--primary); text-decoration: none; }
+        a:hover { text-decoration: underline; }
+
+        @media (max-width: 768px) {
+            nav { padding: 1rem; flex-direction: column; gap: 1rem; }
+            .hero h1 { font-size: 2.2rem; }
+            .section { padding: 4rem 5%; }
+        }
+    </style>
+</head>
+<body>
+
+    <nav>
+        <div class="logo">Soudaysse M.</div>
+        <ul>
+            <li><a href="#a-propos">Profil</a></li>
+            <li><a href="#competences">Compétences</a></li>
+            <li><a href="#parcours">Parcours</a></li>
+            <li><a href="#projets">Projets</a></li>
+        </ul>
+    </nav>
+
+    <section class="hero">
+        <h1>Soudaysse M'HOUMADI ALI</h1>
+        <p>Étudiant en BTS SIO option SISR — 2ème Année</p>
+        <div class="hero-badges">
+            <span>💻 Administration Systèmes & Réseaux</span>
+            <span>🛡️ Cybersécurité</span>
+            <span>🐧 Environnements Linux & OpenSource</span>
+            <span>📍 Lycée de Bamana, Mayotte</span>
+        </div>
+    </section>
+
+    <section id="a-propos" class="section">
+        <h2 class="section-title">À propos de moi</h2>
+        <div class="grid-2">
+            <div>
+                <p style="font-size: 1.1rem; margin-bottom: 1.5rem;">
+                    Futur technicien supérieur en informatique, je concentre mes compétences sur la mise en place, la maintenance et la sécurisation des architectures réseaux d'entreprise. Mon expérience acquise sur le terrain et mes certifications me permettent d'apporter des réponses efficaces aux problématiques d'infrastructure IT.
+                </p>
+                <ul class="profile-list">
+                    <li><strong>📍 Mobilité :</strong> Partout en France / Mayotte</li>
+                    <li><strong>✉️ Courriel :</strong> <a href="mailto:soudayssemhoumadiali737@gmail.com">Cliquez ici pour m'envoyer un e-mail</a></li>
+                    <li><strong>💼 Réseau Pro :</strong> <a href="https://linkedin.com" target="_blank" style="font-weight: bold; color: #0056b3;">Mon profil LinkedIn (Recommandé)</a></li>
+                </ul>
+            </div>
+            <div class="card" style="background-color: var(--primary-light); border: none;">
+                <h3>Objectif Professionnel</h3>
+                <p>Améliorer mes compétences professionnelles, mes capacités et mes connaissances au sein d'une organisation qui reconnait la valeur du travail acharné et qui confie des responsabilités et des défis techniques stimulants.</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="competences" class="section">
+        <h2 class="section-title">Compétences Techniques</h2>
+        <div class="grid-3">
+            <div class="card">
+                <h3>Réseaux & Cisco</h3>
+                <div class="skill-group">
+                    <div class="tags">
+                        <span class="tag">Routage Statique</span>
+                        <span class="tag">Configuration d'interfaces</span>
+                        <span class="tag">VLAN & Commutation</span>
+                        <span class="tag">Cisco Packet Tracer</span>
+                    </div>
+                </div>
+            </div>
+            <div class="card">
+                <h3>Systèmes & Serveurs</h3>
+                <div class="skill-group">
+                    <div class="tags">
+                        <span class="tag">Debian / Ubuntu Server</span>
+                        <span class="tag">Windows Server</span>
+                        <span class="tag">Active Directory (AD DS)</span>
+                        <span class="tag">Services DNS / DHCP</span>
+                    </div>
+                </div>
+            </div>
+            <div class="card">
+                <h3>Virtualisation & Outils</h3>
+                <div class="skill-group">
+                    <div class="tags">
+                        <span class="tag">Hyper-V</span>
+                        <span class="tag">VMware</span>
+                        <span class="tag">VirtualBox</span>
+                        <span class="tag">Jira Ticketing</span>
+                        <span class="tag">TeamViewer / AnyDesk</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="parcours" class="section">
+        <h2 class="section-title">Expériences & Formations</h2>
+        <div class="grid-2">
+            <div>
+                <h3 style="color: var(--secondary); margin-bottom: 1.5rem;">Expériences Professionnelles</h3>
+                <div class="timeline">
+                    <div class="timeline-item">
+                        <div class="timeline-date">Mai 2026 - Juin 2026 (5 semaines)</div>
+                        <div class="timeline-company">Groupe MDSI (Mayotte) — Stage Administrateur Réseau</div>
+                        <p style="font-size: 0.95rem; color: var(--text-muted); margin-top: 0.3rem;">
+                            Installation et configuration de postes, intégration au domaine AD, support technique via Jira/TeamViewer, maintenance serveur et maquettage de solutions de déploiement (Serveur FOG, Hyper-V).
+                        </p>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-date">2023 - 2025</div>
+                        <div class="timeline-company">Climaire et Icart Mayotte (CHM) — Job d'été technique</div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-date">Juin 2023</div>
+                        <div class="timeline-company">Mairie de Mamoudzou — Stage Gestion & Comptabilité</div>
+                    </div>
+                </div>
+            </div>
+            <div>
+                <h3 style="color: var(--secondary); margin-bottom: 1.5rem;">Formations & Diplômes</h3>
+                <div class="timeline">
+                    <div class="timeline-item">
+                        <div class="timeline-date">2025 - 2026</div>
+                        <div class="timeline-company">BTS SIO (Option SISR) — 1ère & 2ème Année</div>
+                        <p style="font-size: 0.95rem; color: var(--text-muted);">Lycée de Bamana</p>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-date">Diplôme obtenu</div>
+                        <div class="timeline-company">Bac Professionnel (Mention Très Bien)</div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-date">Certification</div>
+                        <div class="timeline-company">Certification Numérique PIX</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="projets" class="section">
+        <h2 class="section-title">Réalisations & Fiches Techniques</h2>
+        <div class="grid-2">
+            <div class="card">
+                <h3>Déploiement WordPress sous Debian 13</h3>
+                <p>Configuration de la pile LAMP (Apache2, MariaDB, PHP) avec sécurisation de base de données.</p>
+                <div class="code-block">
+# Mise à jour et installation LAMP
+sudo apt update && sudo apt upgrade -y
+sudo apt install apache2 mariadb-server php php-mysql -y
+# Sécurisation de la base
+sudo mariadb-secure-installation
+                </div>
+            </div>
+
+            <div class="card">
+                <h3>Routage Statique Cisco</h3>
+                <p>Configuration d'interfaces et mise en œuvre d'une route statique.</p>
+                <div class="code-block">
+Router> enable
+Router# configure terminal
+Router(config)# hostname R1
+R1(config)# interface f0/0
+R1(config-if)# ip address 192.168.1.1 255.255.255.0
+R1(config-if)# no shutdown
+R1(config)# ip route 192.168.2.0 255.255.255.0 192.168.1.2
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <p>&copy; 2026 - Soudaysse M'HOUMADI ALI. Tous droits réservés.</p>
+        <p style="font-size: 0.8rem; margin-top: 0.5rem;">Portfolio optimisé pour GitHub Pages — Option SISR</p>
+    </footer>
+
+</body>
+</html>
